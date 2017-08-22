@@ -6,7 +6,7 @@ public class Storage {
 	private int count;
 	
 	public Storage() {
-		productArray = new Product[5];
+		productArray = new Product[10];
 		count = 0;
 	}
 	
@@ -21,6 +21,7 @@ public class Storage {
 		int price, stock;
 		
 		System.out.print("Product No.: ");
+		no = scanner.nextLine();
 		no = scanner.nextLine();
 		System.out.print("Product Name: ");
 		name = scanner.nextLine();
@@ -42,12 +43,35 @@ public class Storage {
 			productArray[i].productInfo();
 	}
 	
-	public void purchase() {
-		
+	//Add number of purchase to stock of item.
+	public void purchase(int num, String item) {
+		if (num >= 0) {
+			int index = this.search(item);
+			if (index == -1)
+				System.out.println("Input of product is not exist.");
+			else
+				productArray[index].modifyStock(productArray[index].getStock() + num);
+		}
 	}
 	
+	//Delete number of sell to stock of item.
+	public void sales(int num, String item) {
+		if (num >= 0) {
+			int index = this.search(item);
+			if (index == -1)
+				System.out.println("Input of product is not exist.");
+			else
+				productArray[index].modifyStock(productArray[index].getStock() - num);
+		}
+	}
+	
+	//Get index of product by search product name in productArray.
 	public int search(String target) {
-		
+		for (int i = 0; i < this.count; i++) {
+			if (this.productArray[i].getName().equalsIgnoreCase(target) == true) 
+				return i;
+		}
+		return -1;
 	}
 
 }
