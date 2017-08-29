@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class Storage {
 	Scanner scanner = new Scanner(System.in);
@@ -12,24 +13,19 @@ public class Storage {
 	
 	public void add() {
 		if (count >= productArray.length) {
-			Product[] temp = new Product[count * 2];
-			System.arraycopy(productArray, 0, temp, 0, count);
-			productArray = null;
-			productArray = temp;
+			productArray = Arrays.copyOf(productArray, count * 2);
 		}
 		String no, name, unit, maker;
 		int price, stock;
 		
 		System.out.print("Product No.: ");
-		no = scanner.nextLine();
-		no = scanner.nextLine();
+		while ((no = scanner.nextLine()).equals("")){}
 		System.out.print("Product Name: ");
 		name = scanner.nextLine();
 		System.out.print("Price: ");
 		price = scanner.nextInt();
 		System.out.print("Unit: ");
-		unit = scanner.nextLine();
-		unit = scanner.nextLine();
+		while ((unit = scanner.nextLine()).equals("")){}
 		System.out.print("Maker: ");
 		maker = scanner.nextLine();
 		System.out.print("Stock: ");

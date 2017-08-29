@@ -1,5 +1,5 @@
 /*
- * Practice 00i9.bonus_Storage system
+ * Practice 009.bonus_Storage system
  * Date 20170818
  */
 import java.util.Scanner;
@@ -11,7 +11,6 @@ public class TestSystem {
 		int input, count = 0;
 		String inputString;
 		Storage storeA = new Storage();
-		Storage[] stores = new Storage[10];
 		while (true) {
 			System.out.print("1)All products. 2)Add new products. 3)Purchase. 4)Sell. -1)Quit.:");
 			input = scanner.nextInt();
@@ -23,14 +22,14 @@ public class TestSystem {
 				storeA.add();
 			else if (input == 3) {
 				System.out.print("Product name:");
-				inputString = scanner.nextLine();
+				while ((inputString = scanner.nextLine()).equals("")){}
 				System.out.print("Purchase amount:");
 				input = scanner.nextInt();
 				storeA.purchase(input, inputString);
 			}
 			else if (input == 4) {
 				System.out.print("Product name:");
-				inputString = scanner.nextLine();
+				while ((inputString = scanner.nextLine()).equals("")){}
 				System.out.print("Sales amount:");
 				input = scanner.nextInt();
 				storeA.sales(input, inputString);
@@ -38,17 +37,7 @@ public class TestSystem {
 			else 
 				System.out.println("Input error!");
 		}
-		
 		System.out.println("Program terminate.");
-		
-//		
-//		storeA.add();
-//		storeA.printStorage();
-//		int i = storeA.search("apple");
-//		System.out.println(i);
-//		i = storeA.search("banana");
-//		System.out.println(i);
-
 	}
 
 }
